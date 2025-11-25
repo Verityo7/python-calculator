@@ -2,9 +2,9 @@ name: Use Reusable Workflow
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
 
 jobs:
   # Call the reusable workflow with default settings
