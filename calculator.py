@@ -3,6 +3,7 @@ import os
 
 DEBUG = os.getenv('DEBUG_MODE', 'false').lower() == 'true'
 
+
 def add(a, b):
     """Return the sum of two numbers."""
     result = a + b
