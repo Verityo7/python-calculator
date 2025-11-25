@@ -4,6 +4,7 @@ import pytest
 from calculator import add, subtract, multiply, divide, power
 
 
+@pytest.mark.not_slow
 def test_add():
     """Test addition function."""
     assert add(2, 3) == 5
@@ -11,6 +12,7 @@ def test_add():
     assert add(0, 0) == 0
 
 
+@pytest.mark.not_slow
 def test_subtract():
     """Test subtraction function."""
     assert subtract(5, 3) == 2
@@ -18,6 +20,7 @@ def test_subtract():
     assert subtract(-3, -2) == -1
 
 
+@pytest.mark.not_slow
 def test_multiply():
     """Test multiplication function."""
     assert multiply(3, 4) == 12
@@ -25,6 +28,7 @@ def test_multiply():
     assert multiply(0, 5) == 0
 
 
+@pytest.mark.not_slow
 def test_divide():
     """Test division function."""
     assert divide(8, 2) == 4
@@ -39,8 +43,15 @@ def test_divide_by_zero():
         divide(10, 0)
 
 
+@pytest.mark.not_slow
 def test_power():
     """Test power function."""
     assert power(2, 3) == 8
     assert power(5, 0) == 1
     assert power(3, 2) == 9
+
+
+@pytest.mark.slow
+def test_large_multiplication(benchmark):
+    result = benchmark(multiply, 1000, 2000)
+    assert result == 2_000_000
